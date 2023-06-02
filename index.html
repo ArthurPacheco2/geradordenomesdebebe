@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerador de Nomes para Bebê</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            background-color: #f9f3e9;
+            padding: 10px;
+            color: #333;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerador de Nomes para Bebê</h1>
+
+    <script>
+        // Lista de nomes femininos
+        var nomesFemininos = [
+            "Alice", "Sophia", "Laura", "Valentina", "Isabella", "Manuela", "Helena",
+            "Luiza", "Júlia", "Lorena", "Lívia", "Maria Eduarda", "Beatriz", "Mariana",
+            "Clara", "Cecília", "Eloá", "Giovanna", "Heloísa", "Isadora", "Lara",
+            "Larissa", "Letícia", "Maitê", "Melissa", "Nina", "Olívia", "Rafaela",
+            "Rebeca", "Sarah", "Sophie", "Yasmin", "Amanda", "Camila", "Carolina",
+            "Gabriela", "Juliana", "Lúcia", "Priscila", "Vitória"
+        ];
+
+        // Lista de nomes masculinos
+        var nomesMasculinos = [
+            "Miguel", "Arthur", "Bernardo", "Heitor", "Davi", "Lorenzo", "Théo",
+            "Pedro", "Gabriel", "Enzo", "Matheus", "Lucas", "Benjamin", "Nicolas",
+            "Guilherme", "Rafael", "João Pedro", "Samuel", "Enrico", "Henrique",
+            "Gustavo", "Felipe", "Leonardo", "Daniel", "João", "Murilo", "Isaac",
+            "Pietro", "Anthony", "Vitor", "Bryan", "Eduardo", "Cauã", "Carlos",
+            "Lucca", "Antônio", "João Miguel", "André", "Thomas", "Otávio"
+        ];
+
+        // Lista de significados dos nomes
+        var significados = {
+            "Alice": "nobre, verdadeira",
+            "Sophia": "sabedoria",
+            "Laura": "vitoriosa, triunfante",
+            "Valentina": "valente, forte"
+            // Adicione os demais significados aqui
+        };
+
+        // Função para gerar os nomes
+        function gerarNomes() {
+            var sobrenomePai = prompt("Digite o sobrenome do pai:");
+            var sobrenomeMae = prompt("Digite o sobrenome da mãe:");
+            var sexo = prompt("Digite o sexo da criança (M para masculino, F para feminino):");
+
+            var listaNomes = sexo.toUpperCase() === "M" ? nomesMasculinos : nomesFemininos;
+
+            var ideiasNomes = [];
+            for (var i = 0; i < 10; i++) {
+                var nomeCompleto = listaNomes[i] + " " + sobrenomePai + " " + sobrenomeMae;
+                var significado = significados[listaNomes[i]] || "Significado desconhecido";
+                ideiasNomes.push({ nome: nomeCompleto, significado: significado });
+            }
+
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = "";
+            for (var j = 0; j < ideiasNomes.length; j++) {
+                var nome = ideiasNomes[j].nome;
+                var significado = ideiasNomes[j].significado;
+
+                var item = document.createElement("li");
+                item.innerHTML = "<strong>Nome:</strong> " + nome + "<br><strong>Significado:</strong> " + significado + "<br>";
+                resultado.appendChild(item);
+            }
+        }
+    </script>
+
+    <button onclick="gerarNomes()">Gerar Nomes</button>
+
+    <ul id="resultado"></ul>
+</body>
+</html>
